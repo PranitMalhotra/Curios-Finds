@@ -1,9 +1,12 @@
 import { makeSchema } from "nexus";
 import { join } from 'path'
+// You are importing the graphql model which exports the Link object type through index.ts. The import is named types
+import * as types from "./graphql";
 
 export const schema = makeSchema({
     // Your GraphQL schema will consist of many types that you will pass as an array to the types object. For now, it is intentionally kept empty.
-    types: [],
+    // You are passing types to the makeSchema function. Nexus will do its thing to generate the SDL from this.
+    types,
     outputs: {
         // The first output file that Nexus will generate for you is a GraphQL schema file of type .graphql. This is the GraphQL Schema Definition Language (SDL) for defining the structure of your API.
         schema: join(process.cwd(), "schema.graphql"),

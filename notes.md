@@ -47,7 +47,7 @@
 ![Alt text](images/image-26.png)
 ![Alt text](images/image-27.png)
 
-### Getting Started
+## Getting Started
 - package.json is the configuration file for the Node.js app you’re building. It lists all dependencies and other configuration options (such as scripts) needed for the app.
 - ts-node-dev, which will enable you to transpile your TS files on the fly and restart your API on changes.
 - Setting "strict": true enables a wide range of type checking behavior that results in more type-safe programs.
@@ -63,3 +63,18 @@
 - However, when querying an object type, it is required that you query at least one of its fields in a selection set.
 - When the type of a root field is an object type, you can further expand the query (or mutation/subscription) with fields of that object type. The expanded part is called the selection set.
 - For the fields in the selection set, it doesn’t matter whether the type of the root field is required or a list.
+
+## A Simple Query
+- When working with a code-first tool like Nexus, the process will look like this:
+    1. Define the components of your schema (types, fields, root object types, etc) using Nexus.
+    2. Generate the GraphQL SDL and types.
+    3. Implement the corresponding resolver functions for the added fields.
+- objectType is used to create a new type in your GraphQL schema.
+- Since index.js or index.ts is accepted as the default entry point to a folder/module in Node.js, you can export everything from the graphql folder here.
+- One of the major advantages of the code-first approach is that you don’t have to worry about having your GraphQL types and your TypeScript types going out of sync. Since Nexus is the source of truth that generates both, there is no risk of the two mismatching.
+- a GraphQL query consists of a number of fields that have their source in the type definitions of the GraphQL schema.
+-  GraphQL libraries will also let you omit trivial resolvers and will just assume that if a resolver isn’t provided for a field, that a property of the same name should be read and returned.
+
+## Adding a database
+- Prisma is an open source database toolkit and ORM that makes it easy for developers to reason about their data and how they access it, by providing a clean and type-safe API for submitting database queries.
+- 
