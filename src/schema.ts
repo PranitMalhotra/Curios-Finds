@@ -13,4 +13,10 @@ export const schema = makeSchema({
         // The second output file is a TypeScript file known as typegen, which will contain TypeScript type definitions for all types in your GraphQL schema. These generated types will help ensure typesafety in your application code and keep your GraphQL schema definition in sync with your schema implementation.
         typegen: join(process.cwd(), "nexus-typegen.ts"),
     },
+    contextType: {
+        // Path to the file (also sometimes called a module) where the context interface (or type) is exported.
+        module: join(process.cwd(), "./src/context.ts"),
+        // Name of the exported interface in that module.
+        export: "Context",
+    }
 })

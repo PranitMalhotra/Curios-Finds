@@ -77,4 +77,20 @@
 
 ## Adding a database
 - Prisma is an open source database toolkit and ORM that makes it easy for developers to reason about their data and how they access it, by providing a clean and type-safe API for submitting database queries.
-- 
+### Database Schema
+- It has three components:
+  - Data source: Specifies your database connection.
+  - Generator: Indicates that you want to generate Prisma Client.
+  - Data model: Defines your application models. Each model will be mapped to a table in the underlying database.
+  - unlike most other SQL databases, SQLite does not have a separate server process. SQLite reads and writes directly to ordinary disk files.
+  - Prisma Client contains everything you need to run queries against your database. Just like Nexus it is designed to be completely type-safe.
+
+## Connecting The Server and Database with Prisma Client
+- For this you will use the third argument in a resolver function, the context argument.
+- The context argument is a plain JavaScript object that every resolver in the resolver chain can read from and write to. 
+- Thus, it is basically a means for resolvers to communicate. 
+- A really helpful feature is that you can already write to the context at the moment when the GraphQL server itself is being initialized.
+- This means that you can attach an instance of Prisma Client to the context when initializing the server and then access it from inside our resolvers via the context argument.
+- Prisma queries return Promise objects as these are asynchronous. 
+- So in both resolvers you are returning a Promise. 
+- This is not a problem as Apollo Server is capable of detecting and automatically resolving any Promise object that is returned from resolver functions.
